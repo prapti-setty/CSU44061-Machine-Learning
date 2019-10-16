@@ -3,19 +3,11 @@ import pandas as pd
 # Load the different libraries needed from sklearn
 from sklearn import preprocessing
 from sklearn import linear_model
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
-from sklearn.linear_model import RidgeCV
-from sklearn.compose import TransformedTargetRegressor
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.feature_selection import SelectFromModel
-from sklearn.neural_network import MLPRegressor
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.preprocessing import Normalizer
 from sklearn.ensemble import RandomForestRegressor
 # Load numpy libraries with alias np
 import numpy as np
-from scipy import stats
 import math
 from math import sqrt
 
@@ -55,19 +47,9 @@ def deal_with_nan_test(test_data, training_data):
 
 def transform_features(data):
     data['University Degree'] = data['University Degree'].map({'Bachelor':1, 'PhD':'3', 'other':0.5, '0':0, 'Master':2, 'No':0})
-    encode = pd.get_dummies(data, columns=[ "Gender","Country","Profession"],
-    prefix=["enc_gen","enc_country","enc_pro"], drop_first=True)
+    encode = pd.get_dummies(data, columns=[ "Gender","Country","Profession","Hair Color"],
+    prefix=["enc_gen","enc_country","enc_pro", "enc_hair"], drop_first=True)
     return encode
-
-def transform_hair(data):
-    encode = pd.get_dummies(data, columns=['Hair Color'], prefix=["enc_hair"], drop_first=True)
-    return encode
-
-def normalize_data(data):
-    df = preprocessing.normalize(data, axis=1)
-    data = pd.DataFrame(df, columns = data.columns)
-    print(data.shape)
-    return data 
     
 def main():
     # Read data from files
@@ -95,10 +77,6 @@ def main():
         df_1 = transformed_data[:split_data_at]
         df_2 = transformed_data[split_data_at:]
 
-    # Create  model (Linear Regression)
-    model = RandomForestRegressor(n_estimators=10)
-    model2 = linear_model.Ridge(alpha = 0.001, normalize=False, fit_intercept=True)
-
     train = df_1
     test = df_2
     
@@ -118,6 +96,11 @@ def main():
     X_test = X_test.drop(['Hair Color','Wears Glasses','Body Height [cm]'], axis=1)
 
     A_train, A_test, b_train, b_test = train_test_split(X_train, y_train, test_size=0.1, random_state = 10)
+    
+    # Create  model (Linear Regression)
+    model = RandomForestRegressor(n_estimators=10)
+    model2 = linear_model.Ridge(alpha = 0.001, normalize=False, fit_intercept=True)
+    
     # Model training
     model2.fit(X_train, y_train['Income'].values.ravel())
     model.fit(X_train, y_train['Income'].values.ravel())
