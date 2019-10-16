@@ -15,20 +15,20 @@ Task: Given a training dataset with many features and an income, predict, for so
 Used libraries: Scikit-learn, numpy, math & pandas
 
 Method:
-Step 1: Some preprocessing - drop Nan in training & fill nan in test with 0 or unknown
-Step 2: Simple Linear regression with only single column (Age) - results - 150k
-Step 3: Linear regression with multiple columns (all numerical columns used here)
-Step 4: Label encode categorical columns like University Degree and gender as these have fewer variables
-Step 5: One hot encode above columns
-Step 6: One hot encode all categorical columns
-Step 6: Try ridge & lasso regression ( Ridge = better, lets use ridge)
-Step 7: Replace test Nans with meaningful data (Means)
-Step 8: Try Random Forest regressor - performs best so far but results "look" different to Ridge (i.e differences of a few thousand in salaries)
-Step 9: Try mean of Random Forest and Ridge - performs good
+Step 1: Some preprocessing - drop Nan in training & fill nan in test with 0 or unknown \n
+Step 2: Simple Linear regression with only single column (Age) - results - 150k \n
+Step 3: Linear regression with multiple columns (all numerical columns used here) \n
+Step 4: Label encode categorical columns like University Degree and gender as these have fewer variables \n
+Step 5: One hot encode above columns \n
+Step 6: One hot encode all categorical columns \n
+Step 6: Try ridge & lasso regression ( Ridge = better, lets use ridge) \n
+Step 7: Replace test Nans with meaningful data (Means) \n
+Step 8: Try Random Forest regressor - performs best so far but results "look" different to Ridge (i.e differences of a few thousand in salaries) \n
+Step 9: Try mean of Random Forest and Ridge - performs good \n
 
 #Testing
 
-Used train_test_split to split data 0.2 - 0.8
+Used train_test_split to split data 0.2 - 0.8 \n
 When testing Locally, train without validation data by just changing what the model is fit with
 
 ## Other
