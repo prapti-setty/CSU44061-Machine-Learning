@@ -8,6 +8,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.ensemble import RandomForestRegressor
 # Load numpy libraries with alias np
 import numpy as np
+from scipy import stats
 import math
 from math import sqrt
 
@@ -77,6 +78,10 @@ def main():
         df_1 = transformed_data[:split_data_at]
         df_2 = transformed_data[split_data_at:]
 
+    # Create  model (Linear Regression)
+    model = RandomForestRegressor(n_estimators=10)
+    model2 = linear_model.Ridge(alpha = 0.001, normalize=True, fit_intercept=True)
+
     train = df_1
     test = df_2
     
@@ -92,14 +97,7 @@ def main():
     X_train = train
     X_test = test
 
-    X_train = X_train.drop(['Hair Color','Wears Glasses','Body Height [cm]'], axis=1)
-    X_test = X_test.drop(['Hair Color','Wears Glasses','Body Height [cm]'], axis=1)
-
     A_train, A_test, b_train, b_test = train_test_split(X_train, y_train, test_size=0.1, random_state = 10)
-    
-    # Create  model (Linear Regression)
-    model = RandomForestRegressor(n_estimators=10)
-    model2 = linear_model.Ridge(alpha = 0.001, normalize=False, fit_intercept=True)
     
     # Model training
     model2.fit(X_train, y_train['Income'].values.ravel())
