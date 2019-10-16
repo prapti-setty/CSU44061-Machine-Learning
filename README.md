@@ -4,7 +4,7 @@ College Assignment aimed at getting experience with the entire machine learning 
 ## Table of Contents
 1. [About](#About)
 1. [Method to Solve](#Solve)
-1. [Testing] (#Test)
+1. [Testing] (#Testing)
 1. [Other things tried](#Other)
 
 ## About
