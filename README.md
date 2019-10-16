@@ -4,7 +4,6 @@ College Assignment aimed at getting experience with the entire machine learning 
 ## Table of Contents
 1. [About](#About)
 1. [Method to Solve](#Solve)
-1. [Testing the algorithms] (#Testing)
 1. [Other things tried](#Other)
 
 ## About
@@ -27,7 +26,7 @@ Step 7: Replace test Nans with meaningful data (Means)
 Step 8: Try Random Forest regressor - performs best so far but results "look" different to Ridge (i.e differences of a few thousand in salaries)
 Step 9: Try mean of Random Forest and Ridge - performs good
 
-## Testing
+#Testing
 
 Used train_test_split to split data 0.2 - 0.8
 When testing Locally, train without validation data by just changing what the model is fit with
