@@ -42,8 +42,8 @@ def deal_with_nan_test(test_data, training_data):
     test_data['Year of Record'] = test_data['Year of Record'].fillna(int(avg_year_of_record(training_data)))
     test_data['Body Height [cm]'] = test_data['Body Height [cm]'].fillna(int(avg_body_height(training_data)))
     test_data['Profession'] = test_data['Profession'].fillna('Unknown')     
-    test_data['Hair Color'] = test_data['Hair Color'].fillna('Unknown')
-    test_data['Wears Glasses'] = test_data['Wears Glasses'].fillna(int(1))
+    #test_data['Hair Color'] = test_data['Hair Color'].fillna('Unknown')
+    #test_data['Wears Glasses'] = test_data['Wears Glasses'].fillna(int(1))
     return test_data
 
 def transform_features(data):
