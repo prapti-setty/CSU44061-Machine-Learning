@@ -57,6 +57,9 @@ def main():
     training_data = pd.read_csv("tcd ml 2019-20 income prediction training (with labels).csv")
     test_data = pd.read_csv("tcd ml 2019-20 income prediction test (without labels).csv")
     
+    training_data = training_data.drop(['Hair Color', "Wears Glasses"], axis=1)
+    test_data = test_data.drop(['Hair Color', "Wears Glasses"], axis=1)
+
     # Clean Data
     # Remove any Nan's from training data
     non_nan_data = deal_with_nan_training(training_data)
