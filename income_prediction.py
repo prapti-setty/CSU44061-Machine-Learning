@@ -48,8 +48,8 @@ def deal_with_nan_test(test_data, training_data):
 
 def transform_features(data):
     data['University Degree'] = data['University Degree'].map({'Bachelor':1, 'PhD':'3', 'other':0.5, '0':0, 'Master':2, 'No':0})
-    encode = pd.get_dummies(data, columns=[ "Gender","Country","Profession","Hair Color"],
-    prefix=["enc_gen","enc_country","enc_pro", "enc_hair"], drop_first=True)
+    encode = pd.get_dummies(data, columns=[ "Gender","Country","Profession"],
+    prefix=["enc_gen","enc_country","enc_pro"], drop_first=True)
     return encode
     
 def main():
